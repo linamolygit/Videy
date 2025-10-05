@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="64c5ff716ec0e41b6238bf388636befa4b28962e" content="64c5ff716ec0e41b6238bf388636befa4b28962e" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videy - Video Player</title>
+  <style>
+      body {
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+          background-color: #fff;
+      }
+
+      .page-container {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 15px;
+      }
+
+      header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 15px 0;
+          border-bottom: 1px solid #e8e8e8;
+      }
+
+      .logo {
+          font-size: 2rem;
+          font-weight: bold;
+          color: #111;
+      }
+
+      .header-nav a {
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+          padding: 10px 24px;
+          border-radius: 20px;
+          margin-left: 10px;
+          transition: background-color 0.2s;
+      }
+
+      .header-nav a.upload {
+          background-color: #f0f0f0;
+      }
+      
+      .header-nav a:hover {
+          background-color: #e9e9e9;
+      }
+
+      .video-container {
+          position: relative;
+          width: 100%;
+          margin-top: 20px;
+          background-color: #000;
+          border-radius: 8px;
+          overflow: hidden;
+      }
+      
+      video {
+          width: 100%;
+          display: block;
+          border-radius: 8px;
+      }
+
+      .video-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 60px;
+          z-index: 10;
+          cursor: pointer;
+      }
+
+      .share-section {
+          padding: 25px 0;
+          text-align: center;
+      }
+
+      .share-section h2 {
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin-bottom: 25px;
+      }
+
+      .share-links {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: 20px;
+          justify-content: center;
+          max-width: 600px;
+          margin: 0 auto;
+      }
+      
+      .share-link {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+          padding: 5px;
+      }
+
+      .share-link svg {
+          width: 24px;
+          height: 24px;
+      }
+
+      /* Buttons container - flex layout for equal width */
+      .action-buttons {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+          margin: 20px 0;
+      }
+
+      .action-button {
+          flex: 1;             /* equal width */
+          max-width: 140px;    /* optional max width */
+          background: linear-gradient(145deg,#111,#000);
+          color:#fff;
+          border:none;
+          padding:0.5rem 1.5rem;
+          font-size:1.5rem;
+          border-radius:2.5rem;
+          cursor:pointer;
+          text-transform:uppercase;
+          box-shadow:0 0 25px rgba(255,255,255,0.2);
+          position:relative;
+          overflow:hidden;
+          transition: transform 0.3s ease;
+      }
+
+      /* Shine effect */
+      .action-button.shine::before {
+          content:"";
+          position:absolute;
+          top:0; left:-75%;
+          width:50%; height:100%;
+          background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);
+          transform:skewX(-20deg);
+          animation:shine 2.5s infinite;
+      }
+
+      @keyframes shine{
+          0%{left:-75%}
+          100%{left:125%}
+      }
+
+      @keyframes zoomIn {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+      }
+
+      @keyframes shake {
+    0% { transform: translateX(0); }
+    10% { transform: translateX(-8px); }
+    20% { transform: translateX(8px); }
+    30% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    50% { transform: translateX(-4px); }
+    60% { transform: translateX(4px); }
+    70% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    90% { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+    }
+    
+  </style>
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <div class="logo">videy</div>
+            <nav class="header-nav">
+                <a href="#" class="upload">Upload</a>
+                <a href="#">Advertise</a>
+            </nav>
+        </header>
+
+        <main>
+          
+          <script>
+(function(evszl){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = evszl || {};
+s.src = "\/\/monumental-equipment.com\/bMXLVZs.dNGClr0\/YDWzcL\/Cetm_9auNZXUKlPkXPjTeYq2\/Nxjhg\/1PNsDpIetWNOjMY\/2UORDQUl0fMhwt";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+          </script>
+            <div class="video-container" id="videoContainer">
+                <video id="myVideo" controls muted></video>
+                <div class="video-overlay" id="videoOverlay"></div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-button" id="nextBtn">Next</button>
+                <button class="action-button" id="fullBtn">Full Video</button>
+            </div>
+          <script type="text/javascript">
+	atOptions = {
+		'key' : 'ef580aae91c0e4bbb2d3751762c99b2f',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/ef580aae91c0e4bbb2d3751762c99b2f/invoke.js"></script>
+
+            <section class="share-section">
+                <h2>Share this link</h2>
+              <div class="share-links">
+                    <a href="#" class="share-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></svg>
+                        Copy link
+                    </a>
+                    <a href="#" class="share-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
+                        Email
+                    </a>
+                    <a href="#" class="share-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                        Twitter
+                    </a>
+                    <a href="#" class="share-link">
+                        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.8.48 3.49 1.34 4.94L2 22l5.25-1.38c1.4.81 3.03 1.29 4.79 1.29h.01c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2M12.05 3.67c4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.23-8.23 8.23h-.01c-1.54 0-3-.42-4.28-1.17l-.3-.18-3.18.83.85-3.1-.2-.32c-.82-1.32-1.28-2.88-1.28-4.51.01-4.54 3.7-8.23 8.24-8.23m4.52 10.2c-.25-.12-1.47-.72-1.7-.8s-.39-.12-.56.12c-.17.25-.64.8-.79.96-.15.17-.3.19-.55.06s-1.04-.38-1.98-1.22c-.74-.66-1.23-1.47-1.38-1.72s-.02-.38.11-.5c.12-.12.25-.3.38-.45.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.4-.42-.55-.43h-.48c-.17 0-.43.06-.66.31s-.86.84-.86 2.04c0 1.2.88 2.36 1 2.53s1.75 2.67 4.22 3.72c.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18s.2-1.08.15-1.18c-.05-.1-.17-.16-.41-.28"></path></svg>
+                        WhatsApp
+                    </a>
+                    <a href="#" class="share-link">
+                        <svg viewBox="0 0 24 24" fill="#0088cc"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.622 5.218c.347-1.61-1.217-2.227-2.203-1.728L1.254 9.403c-1.859.723-1.855 1.728.289 2.19l4.545 1.405 10.516-6.638c.498-.323.955-.145.564.198"></path></svg>
+                        Telegram
+                    </a>
+                    <a href="#" class="share-link">
+                         <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-1.5c-1 0-1.5.5-1.5 1.5V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z"></path></svg>
+                        Facebook
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+    // Video list
+    const videoList = [ 
+  "https://qu.ax/ZDFwl.mp4",
+  "https://qu.ax/uvRpK.mp4",
+  "https://qu.ax/ydiaJ.mp4",
+  "https://qu.ax/MKFnn.mp4",
+  "https://qu.ax/Jdqnj.mp4",
+  "https://qu.ax/PGpdl.mp4",
+  "https://qu.ax/zxpdr.mp4",
+  "https://qu.ax/atLCk.mp4",
+  "https://qu.ax/pCjQM.mp4",
+  "https://qu.ax/hnszg.mp4",
+  "https://qu.ax/BbggR.mp4",
+  "https://qu.ax/nYFMk.mp4",
+  "https://qu.ax/GoLkb.mp4",
+  "https://qu.ax/PKhDq.mp4",
+  "https://qu.ax/ruVVJ.mp4",
+  "https://qu.ax/qgoPi.mp4",
+  "https://qu.ax/dxBku.mp4",
+  "https://qu.ax/pEsCT.mp4",
+  "https://qu.ax/qMrfv.mp4",
+  "https://qu.ax/KbMfc.mp4",
+  "https://qu.ax/dhLUb.mp4",
+  "https://qu.ax/Koxat.mp4",
+  "https://qu.ax/RndjL.mp4",
+  "https://qu.ax/zSSxe.mp4",
+  "https://qu.ax/OrFRC.mp4",
+  "https://qu.ax/Lxant.mp4",
+  "https://qu.ax/drTds.mp4",
+  "https://qu.ax/EYxbT.mp4",
+  "https://qu.ax/cJSTt.mp4",
+  "https://qu.ax/eZZZn.mp4",
+  "https://qu.ax/aWvSt.mp4",
+  "https://qu.ax/GBcZu.mp4",
+  "https://qu.ax/gdYTU.mp4",
+  "https://qu.ax/SFPvl.mp4",
+  "https://qu.ax/EwGte.mp4",
+  "https://qu.ax/iyQoP.mp4",
+  "https://qu.ax/YDcFb.mp4",
+  "https://qu.ax/AGATv.mp4",
+  "https://qu.ax/PzaRl.mp4",
+  "https://qu.ax/PKhDq.mp4",
+  "https://qu.ax/AxVYl.mp4",
+  "https://qu.ax/SFSyJ.mp4",
+  "https://qu.ax/lewOU.mp4",
+  "https://qu.ax/cKXMe.mp4",
+  "https://qu.ax/RndjL.mp4",
+  "https://qu.ax/dLSFj.mp4",
+  "https://qu.ax/QOBof.mp4",
+  "https://qu.ax/jtyJf.mp4",
+  "https://qu.ax/XPrXb.mp4",
+  "https://qu.ax/dhfMk.mp4",
+  "https://qu.ax/EhiAq.mp4",
+  "https://qu.ax/ltyUj.mp4",
+  "https://qu.ax/pgAJq.mp4",
+  "https://qu.ax/xWCxs.mp4",
+  "https://qu.ax/ssOsw.mp4",
+  "https://qu.ax/OAqrX.mp4",
+  "https://qu.ax/NWdJL.mp4",
+  "https://qu.ax/RTLUt.mp4",
+  "https://qu.ax/xneRa.mp4",
+  "https://qu.ax/hTAVA.mp4",
+  "https://qu.ax/VUMry.mp4",
+  "https://qu.ax/DUaQh.mp4",
+  "https://qu.ax/Vxyoh.mp4",
+  "https://qu.ax/QwyDA.mp4",
+  "https://qu.ax/bkBKx.mp4",
+  "https://qu.ax/lCCau.mp4",
+  "https://qu.ax/GbCjk.mp4",
+  "https://qu.ax/Gbzvr.mp4",
+  "https://qu.ax/rNyUr.mp4",
+  "https://qu.ax/jCjJA.mp4",
+  "https://qu.ax/kTfOe.mp4",
+  "https://qu.ax/imVkK.mp4",
+  "https://qu.ax/SnDfd.mp4",
+  "https://qu.ax/eEhef.mp4",
+  "https://qu.ax/BAtYb.mp4",
+  "https://qu.ax/nnlHF.mp4",
+  "https://qu.ax/vdDjb.mp4",
+  "https://qu.ax/GLlJm.mp4",
+  "https://qu.ax/tvOzx.mp4",
+  "https://qu.ax/HovPq.mp4",
+  "https://qu.ax/wSNJw.mp4",
+  "https://qu.ax/TQCXN.mp4",
+  "https://qu.ax/fyDNf.mp4",
+  "https://qu.ax/HyYob.mp4",
+  "https://qu.ax/BuTQB.mp4",
+  "https://qu.ax/edAVu.mp4",
+  "https://qu.ax/GhHRc.mp4",
+  "https://qu.ax/JDlPt.mp4",
+  "https://qu.ax/MZMWW.mp4",
+  "https://qu.ax/YKSQo.mp4",
+  "https://qu.ax/CGfOd.mp4",
+  "https://qu.ax/bYbbS.mp4",
+  "https://qu.ax/eOgUo.mp4",
+  "https://qu.ax/seUSH.mp4",
+  "https://qu.ax/kxCng.mp4",
+  "https://qu.ax/wiBNF.mp4",
+  "https://qu.ax/AEAlJ.mp4",
+  "https://qu.ax/qNfMo.mp4",
+  "https://qu.ax/lsaFR.mp4",
+  "https://qu.ax/ovGrG.mp4",
+  "https://qu.ax/MchBV.mp4",
+  "https://qu.ax/ERlur.mp4",
+  "https://qu.ax/fCzzH.mp4",
+  "https://qu.ax/pEkot.mp4",
+  "https://qu.ax/mbVLp.mp4",
+  "https://qu.ax/ApaAH.mp4",
+  "https://qu.ax/nDhLv.mp4",
+  "https://qu.ax/fmZUU.mp4",
+  "https://qu.ax/sxbCW.mp4",
+  "https://qu.ax/OLYUl.mp4",
+  "https://qu.ax/qZCxQ.mp4",
+  "https://qu.ax/YoCfR.mp4",
+  "https://qu.ax/lHBTK.mp4",
+  "https://qu.ax/zbDMB.mp4",
+  "https://qu.ax/SAzUx.mp4",
+  "https://qu.ax/XPrXb.mp4",
+  "https://qu.ax/Tbvcj.mp4",
+  "https://qu.ax/waoAg.mp4",
+  "https://qu.ax/gmxjY.mp4",
+  "https://qu.ax/EhiAq.mp4",
+  "https://qu.ax/vMAQN.mp4",
+  "https://qu.ax/ltyUj.mp4",
+  "https://qu.ax/pgAJq.mp4",
+  "https://qu.ax/AAOio.mp4",
+  "https://qu.ax/NWdJL.mp4",
+  "https://qu.ax/qRiGT.mp4",
+  "https://qu.ax/hTAVA.mp4",
+  "https://qu.ax/OAqrX.mp4"
+];
+
+    // Watched videos from localStorage
+    let watched = JSON.parse(localStorage.getItem("watchedVideos")) || [];
+
+    // Filter unwatched videos
+    let unwatched = videoList.filter(v => !watched.includes(v));
+
+    // If all videos watched, reset
+    if (unwatched.length === 0) {
+      watched = [];
+      unwatched = [...videoList];
+    }
+
+    // Pick random video
+    const randomVideo = unwatched[Math.floor(Math.random() * unwatched.length)];
+
+    // Save as watched
+    watched.push(randomVideo);
+    localStorage.setItem("watchedVideos", JSON.stringify(watched));
+
+    // Set video source
+    const video = document.getElementById('myVideo');
+    video.src = randomVideo;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const links = [
+            "https://otieu.com/4/9960674",
+            "https://otieu.com/4/9967639"
+        ];
+
+        const anchors = Array.from(document.querySelectorAll('.header-nav a, .share-links .share-link'));
+        anchors.forEach((a, idx) => {
+            const link = links[idx % links.length];
+            a.setAttribute('href', link);
+        });
+
+        let overlayIndex = 0;
+        const overlay = document.getElementById('videoOverlay');
+        overlay.addEventListener('click', () => {
+            const url = links[overlayIndex % links.length];
+            overlayIndex++;
+            window.open(url, '_blank');
+        });
+
+        const video = document.getElementById('myVideo');
+        const nextBtn = document.getElementById('nextBtn');
+        const fullBtn = document.getElementById('fullBtn');
+
+        // ✅ Next button → Page refresh
+        nextBtn.addEventListener('click', () => {
+            location.reload();
+        });
+
+        // ✅ Full button → Random video from your custom list
+        fullBtn.addEventListener('click', () => {
+            const fullList = [
+              "https://qu.ax/fRdJL.mp4",
+              "https://qu.ax/mdtdv.mp4",
+              "https://qu.ax/DKgQL.mp4"
+            ];
+            const randomFull = fullList[Math.floor(Math.random() * fullList.length)];
+            video.src = randomFull;
+            video.play();
+        });
+
+        video.addEventListener('ended', () => {
+            nextBtn.style.animation = 'zoomIn 1s forwards';
+            setTimeout(() => {
+                nextBtn.classList.add('shine');
+                fullBtn.classList.add('shine');
+
+                function shakeButtons() {
+                    // Next Button shake + vibrate
+                    nextBtn.style.animation = 'shake 1s';
+                    if (navigator.vibrate) {
+                        navigator.vibrate([100, 50, 100]); // short pattern
+                    }
+
+                    setTimeout(() => {
+                        // Full Button shake + vibrate
+                        fullBtn.style.animation = 'shake 1s';
+                        if (navigator.vibrate) {
+                            navigator.vibrate([100, 50, 100]);
+                        }
+                    }, 1000);
+                }
+
+                // Start shaking at interval
+                const intervalId = setInterval(shakeButtons, 2000);
+                shakeButtons();
+
+                // Stop shaking & vibrating after 3 sec
+                setTimeout(() => {
+                    clearInterval(intervalId);
+                    if (navigator.vibrate) {
+                        navigator.vibrate(0); // stop vibration
+                    }
+                }, 3000);
+
+            }, 1000);
+        });
+    });
+</script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const videoContainer = document.getElementById('videoContainer');
+
+    // Create ad overlay
+    function createAd(id, content) {
+        const adDiv = document.createElement('div');
+        adDiv.id = id;
+        adDiv.style.position = 'absolute';
+        adDiv.style.top = '10px';
+        adDiv.style.left = '50%';
+        adDiv.style.transform = 'translateX(-50%)';
+        adDiv.style.zIndex = '20';
+        adDiv.style.display = 'none';
+        adDiv.style.background = '#fff';
+        adDiv.style.padding = '5px';
+        adDiv.style.borderRadius = '8px';
+        adDiv.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+        adDiv.innerHTML = `
+            <div style="position: relative;">
+                <button style="position: absolute; top: -10px; right: -10px; background: #000; color: #fff; border-radius: 50%; border: none; width: 25px; height: 25px; cursor: pointer;">X</button>
+                ${content}
+            </div>
+        `;
+        const closeBtn = adDiv.querySelector('button');
+        closeBtn.addEventListener('click', () => adDiv.style.display = 'none');
+        videoContainer.appendChild(adDiv);
+        return adDiv;
+    }
+
+    // 1st Banner Ad
+    const ad1Content = `<script>(function(nsd){var d=document,s=d.createElement('script'),l=d.scripts[d.scripts.length-1];s.settings=nsd||{};s.src="\/\/monumental-equipment.com\/b\/XsV.sHdJGUl\/0qYgWmcH\/-e\/m\/9nu\/ZFUclWk\/PCT\/Y\/2_NRj-cC4rNMTxYMtBNBjmYx2\/NZz\/g\/1\/NRwb";s.async=true;s.referrerPolicy='no-referrer-when-downgrade';l.parentNode.insertBefore(s,l);})({})<\/script>`;
+    const ad1 = createAd('ad1', ad1Content);
+
+    // 2nd Banner Ad
+    const ad2Content = `<script type="text/javascript">atOptions = {'key':'b8d24e1d3784bebbb324eec15a167bd8','format':'iframe','height':250,'width':300,'params':{}};<\/script><script type="text/javascript" src="//www.highperformanceformat.com/b8d24e1d3784bebbb324eec15a167bd8/invoke.js"><\/script>`;
+    const ad2 = createAd('ad2', ad2Content);
+
+    // Ad schedule timings (in ms)
+    const adSchedule = [
+        {ad: ad1, time: 2000},
+        {ad: ad2, time: 8000},
+        {ad: ad1, time: 15000},
+        {ad: ad2, time: 30000},
+        {ad: ad1, time: 40000},
+        {ad: ad2, time: 45000},
+    ];
+
+    // Show ad function
+    function showAd(ad) {
+        ad.style.display = 'block';
+        setTimeout(() => {
+            ad.style.display = 'none';
+        }, 2000); // ad visible 2 sec
+    }
+
+    // Schedule ads
+    adSchedule.forEach(item => {
+        setTimeout(() => showAd(item.ad), item.time);
+    });
+});
+  </script>
+  
+</body>
+            </html>
+            
